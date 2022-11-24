@@ -1,0 +1,129 @@
+<div
+  class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded"
+  [ngClass]="color === 'light' ? 'bg-white' : 'bg-red-900 text-white'"
+>
+  <div class="rounded-t mb-0 px-4 py-3 border-0">
+    <div class="flex flex-wrap items-center">
+      <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+        <h3
+          class="font-semibold text-lg"
+          [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
+        >
+          Domains
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="block w-full overflow-x-auto">
+
+
+  <div class="rounded-t mb-0 px-4 py-3 border-0">
+    <div class="flex flex-wrap items-center text-right">
+      <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+          <button type="button" data-modal-toggle="authentication-modal" type="button" (click)="toggleModal()">
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+    <!-- Repeat this for the number of data we wish to diplay on table -->
+    <table class="items-center w-full bg-transparent border-collapse table-auto">
+      <thead>
+        <tr>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            Id
+          </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            ">
+            Domain Name
+        </th>
+        <th
+        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+        [ngClass]="
+          color === 'light'
+            ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+            : 'bg-red-800 text-red-300 border-red-700'
+        ">
+        Created At
+    </th>
+      <th
+        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+        [ngClass]="
+          color === 'light'
+            ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+            : 'bg-red-800 text-red-300 border-red-700'
+        ">
+        Updated At
+    </th>
+        </tr>
+      </thead>
+
+ <!-- Repeat this for the number of data we wish to diplay on table and the number of rows-->
+      <tbody>
+        <tr *ngFor="let domain of domains">
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            {{ domain.id }}
+          </td>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            {{ domain.domainName }}
+          </td>
+          <td
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+          {{ domain.created_at }}
+        </td>
+        <td
+          class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+          {{ domain.updated_at }}
+        </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+<div *ngIf="showModal" class="py-12 px-12 bg-gray-700 transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0">
+  <div class="relative w-auto my-6 mx-auto max-w-5xl py-12 px-12">
+    <!--content-->
+    <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+      <!--header-->
+      <div class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+        <h3 class="text-3xl font-semibold">
+          Add a Domain
+        </h3>
+        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" (click)="toggleModal()">
+          <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+            ×
+          </span>
+        </button>
+      </div>
+      <!--body-->
+      <form action="" >
+        <div class="relative p-5 flex-wrap">
+          <label for="name" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Domain Name :</label>
+          <input id="name" class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder="Medecin" required/>
+        </div>
+      </form>
+</div>
+</div>
+</div>
