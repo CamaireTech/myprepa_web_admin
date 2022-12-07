@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/service/data.service';
 
 @Component({
   selector: 'app-tab-session',
@@ -6,15 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabSessionComponent implements OnInit {
   color: any;
+  sessions:any;
 
-  constructor() { }
+  constructor(private dataService:DataService) { }
 
   ngOnInit(): void {
+    this.getSessionList();
   }
 
   showModal = false;
   toggleModal(){
     this.showModal = !this.showModal;
+  }
+
+  getSessionList(){
+    this.dataService.getData('sessions').subscribe(
+      res =>{
+        console.log(res);
+        this.sessions = res['data']
+      }
+    )
   }
 
   showdrop1 = false;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/service/data.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-tab-school',

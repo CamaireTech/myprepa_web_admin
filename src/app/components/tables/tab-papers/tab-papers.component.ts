@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/service/data.service';
 
 @Component({
   selector: 'app-tab-papers',
@@ -6,15 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabPapersComponent implements OnInit {
   color: any;
+  papers:any;
 
-  constructor() { }
+  constructor(private dataService:DataService) { }
 
   ngOnInit(): void {
+    this.getPaperList();
   }
 
   showModal = false;
   toggleModal(){
     this.showModal = !this.showModal;
+  }
+
+  getPaperList()
+  {
+   this.dataService.getData('papers').subscribe(
+     res =>{
+       console.log(res['data']);
+       this.papers = res['data']
+     }
+   )
   }
 
   showdrop1 = false;

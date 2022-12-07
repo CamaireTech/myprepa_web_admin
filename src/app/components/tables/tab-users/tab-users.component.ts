@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';2
+import { Component, OnInit } from '@angular/core';
 import {DataService} from 'src/app/service/data.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class TabUsersComponent implements OnInit {
   }
   
     getUserList()
-    {
+    { 
       console.log("list of all User");
       this.dataService.getData('users').subscribe(
         res=> {

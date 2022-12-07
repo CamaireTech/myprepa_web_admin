@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/service/data.service';
 
 @Component({
   selector: 'app-tab-correction',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabCorrectionComponent implements OnInit {
 color: any;
+corrections:any;
+  constructor(private dataService:DataService) { }
 
-  constructor() { }
 
   ngOnInit(): void {
+    this.getCorrectinList();
+  }
+
+
+  getCorrectinList()
+  {
+   this.dataService.getData('corrections').subscribe(
+     res =>{
+       console.log(res['data']);
+       this.corrections = res['data']
+     }
+   )
   }
 
 

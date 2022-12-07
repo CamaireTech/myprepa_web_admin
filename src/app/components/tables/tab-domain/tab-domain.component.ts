@@ -10,7 +10,9 @@ import { DataService } from 'src/app/service/data.service';
 export class TabDomainComponent implements OnInit {
 color: any;
 domains:any;
-constructor(private dataService:DataService, formBuilder: FormBuilder,) {
+constructor(private dataService:DataService, private formBuilder: FormBuilder,
+  
+  ) {
 
  }
 
@@ -18,17 +20,15 @@ constructor(private dataService:DataService, formBuilder: FormBuilder,) {
   this.getdomainList();
  }
 
-//  checkoutForm = this.formBuilder.group({
-//   domainName: '',
-// });
+ domainForm = this.formBuilder.group({
+  domainName: '',
+});
 
 
-// onSubmit(): void {
-//   // Process checkout data here
-//   // this.items = this.cartService.clearCart();
-//   console.warn('Your order has been submitted', this.checkoutForm.value);
-//   this.checkoutForm.reset();
-// }
+onSubmit(): void {
+  console.warn('Your order has been submitted', this.domainForm.value);
+  this.domainForm.reset();
+}
 
 
  getdomainList()

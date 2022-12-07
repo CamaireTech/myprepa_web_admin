@@ -9,7 +9,7 @@
           class="font-semibold text-lg"
           [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
         >
-          Domains
+          Domains 
         </h3>
       </div>
     </div>
@@ -47,7 +47,7 @@
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
                 : 'bg-red-800 text-red-300 border-red-700'
             ">
-            Domain Name
+            Domain 
         </th>
         <th
         class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
@@ -118,11 +118,35 @@
         </button>
       </div>
       <!--body-->
-      <form action="" >
+
+
+
+      <!-- <form action="" > -->
+      <form [formGroup]="domainForm" (ngSubmit)="onSubmit()" >
         <div class="relative p-5 flex-wrap">
-          <label for="name" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Domain Name :</label>
-          <input id="name" class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder="Medecin" required/>
+          <label 
+          for="domainName"
+            class="text-gray-800 text-sm font-bold leading-tight tracking-normal">
+            Domain Name :
+          </label>
+          <input 
+          id="domainName"  
+            formControlName="domainName"
+            type="text"
+          class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" 
+          placeholder="Enter Domain Name"
+           required/>
+
         </div>
+
+        <div class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+          <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
+            Close
+          </button>
+          <button class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="submit" >
+            done
+          </button>
+          </div>
       </form>
 </div>
 </div>

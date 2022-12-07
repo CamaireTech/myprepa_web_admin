@@ -1,20 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-
+import { DataService } from 'src/app/service/data.service';
 @Component({
   selector: 'app-tab-exams',
   templateUrl: './tab-exams.component.html',
 })
 export class TabExamsComponent implements OnInit {
 color: any;
+exams:any;
 
-  constructor() { }
+  constructor(private dataService:DataService) { }
 
   ngOnInit(): void {
+    this.getExamsList()
   }
 
   showModal = false;
   toggleModal(){
     this.showModal = !this.showModal;
+  }
+
+  getExamsList()
+  {
+   this.dataService.getData('exams').subscribe(
+     res =>{
+       console.log(res);
+       this.exams = res['data']
+     }
+   )
   }
 
   showdrop1 = false;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/service/data.service';
 
 @Component({
   selector: 'app-tab-subject',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabSubjectComponent implements OnInit {
   color: any;
+  subjects:any;
 
-  constructor() { }
+  constructor(private dataService:DataService) { }
 
   ngOnInit(): void {
+    this.getSubjectList();
   }
 
   showModal = false;
@@ -17,6 +20,17 @@ export class TabSubjectComponent implements OnInit {
     this.showModal = !this.showModal;
   }
 
+
+  getSubjectList()
+  {
+   this.dataService.getData('subjects').subscribe(
+     res =>{
+       console.log(res);
+       this.subjects = res['data']
+     }
+   )
+  }
+ 
   showdrop1 = false;
   showdrop2 = false;
   showdrop3 = false;
